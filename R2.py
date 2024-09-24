@@ -2,8 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy import integrate
 
-v = 10 
-r = 50 
+v = 10
+r = 50
 l = 100
 
 def differential_rl(t, i):
@@ -23,11 +23,11 @@ def main():
                                  t_eval=t)
     i_differential = result.y[0]
     t = result.t
-    plt.plot(t, i_differential, "k.", label = "Step size = 0.05")
+    plt.plot(t, i_differential, "k.", label = "Differential Equation")
     plt.xlabel("Time (s)")
     plt.ylabel("Current (A)")
     plt.legend()
-    plt.savefig("R2_v10_r50_l100__h0.05_dif.svg",bbox_inches='tight') 
+    #plt.savefig("R2_v10_r50_l10__h0.05_dif.svg",bbox_inches='tight') 
     plt.show()
     
 if __name__ == '__main__':
