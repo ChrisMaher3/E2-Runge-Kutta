@@ -17,7 +17,8 @@ def main():
     t = np.linspace(t0, tf, n)
     result = integrate.solve_ivp(fun=nonlinear1, 
                                  t_span=(t0, tf), 
-                                 y0=y0, method="RK45", 
+                                 y0=y0, 
+                                 method="RK45", 
                                  t_eval=t)
     y = result.y[0]
     t = result.t
