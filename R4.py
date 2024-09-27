@@ -1,42 +1,67 @@
+
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.integrate import solve_ivp
 
-def damped_pendulum(t, y, b=0.1, omega0=1):
+from scipy import integrate
+
+
+def damped_pendulum(t, y, b, omega0):
     x, v = y
     dxdt = v
     dvdt = -b*v-(omega0**2)*x
     dydt = np.array([dxdt, dvdt])
     return dydt
 
+
+
+x0 = 0  
+v0 = 1 
+y0 = (x0, v0)  
+t0 = 0  
+
 b = 0.1
-omega0 = 1 
-t_span = (0, 50) 
-t_eval = np.linspace(0, 50, 1000)
+omega0 = 1
 
-x0 = 1
-v0 = 0
-initial_conditions = [x0, v0]
 
-solution = solve_ivp(damped_pendulum, t_span, initial_conditions, args=(b, omega0), t_eval=t_eval)
+tf = 150
+n = 1001  
 
-t = solution.t
-x = solution.y[0]
-v = solution.y[1]
 
-plt.figure(figsize=(12, 5))
-plt.subplot(1, 2, 1)
-plt.plot(t, x, "k", label="x(t)")
-plt.plot(t, v, "C1", label="v(t)")
-plt.xlabel('Time')
-plt.ylabel('Displacement (x)')
-plt.legend()
+t = np.linspace(t0, tf, n) 
 
-plt.subplot(1, 2, 2)
-plt.plot(x, v, "k", label=f'Phase Space (b={b})')
-plt.xlabel('Displacement (x)')
-plt.ylabel('Velocity (v)')
-plt.legend()
+result = integrate.solve_ivp(fun=damped_pendulum, 
+                             t_span=(t0, tf), 
+                             y0=y0, 
+                             args=(b, omega0),
+                             method="RK45", 
+                             t_eval=t)  
 
-plt.tight_layout()
+
+x, v = result.y
+t = result.t
+
+
+epsilon = 1e-3
+
+for i in range(len(t)):
+    if np.abs(x[i]) < epsilon and np.abs(v[i]) < epsilon:
+        print(f"Oscillator is considered 'at rest' at t = {t[i]:.2f} seconds.")
+        break
+
+fig, ax = plt.subplots(1, 2, figsize=(12, 6))  
+
+ax[0].plot(t, x, label=r"x(t)")
+ax[0].plot(t, v, label=r"v(t)")
+ax[0].set_xlabel(r"t")
+ax[0].legend(loc=1)
+
+
+ax[1].plot(v, x, 'k')
+
+
+ax[1].axis('equal')
+
+ax[1].set_xlabel(r"x")
+ax[1].set_ylabel(r"v")
+
 plt.show()
