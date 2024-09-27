@@ -23,7 +23,7 @@ b = 0.1
 omega0 = 1
 
 
-tf = 150
+tf = 100
 n = 1001  
 
 
@@ -50,18 +50,15 @@ for i in range(len(t)):
 
 fig, ax = plt.subplots(1, 2, figsize=(12, 6))  
 
-ax[0].plot(t, x, label=r"x(t)")
-ax[0].plot(t, v, label=r"v(t)")
-ax[0].set_xlabel(r"t")
+ax[0].plot(t, x, label="x(t)")
+ax[0].plot(t, v, label="v(t)")
+ax[0].set_xlabel("Time (t)")
+ax[0].set_ylabel("Displacement(x)")
 ax[0].legend(loc=1)
 
-
 ax[1].plot(v, x, 'k')
-
-
 ax[1].axis('equal')
-
-ax[1].set_xlabel(r"x")
-ax[1].set_ylabel(r"v")
-
+ax[1].set_xlabel("Displacement (x)")
+ax[1].set_ylabel("Velocity (v)")
+#plt.savefig("R4_B5_t25.83_overdamped.svg",bbox_inches='tight') 
 plt.show()
