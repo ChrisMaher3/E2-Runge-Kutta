@@ -26,7 +26,8 @@ v = solution.y[1]
 
 plt.figure(figsize=(12, 5))
 plt.subplot(1, 2, 1)
-plt.plot(t, x, "k", label=f'Damping constant b={b}')
+plt.plot(t, x, "k", label="x(t)")
+plt.plot(t, v, "C1", label="v(t)")
 plt.xlabel('Time')
 plt.ylabel('Displacement (x)')
 plt.legend()
