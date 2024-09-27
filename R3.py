@@ -2,7 +2,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from scipy import integrate
-from pathlib import Path
 
 
 def simple_pendulum(t, y):
