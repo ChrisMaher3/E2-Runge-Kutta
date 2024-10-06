@@ -44,7 +44,7 @@ def placeholder_amplitudes(tf, n, omega_0, b, y0):
     plt.legend()  # Make the plot labels visible
     plt.xlabel('Driving frequency ($\omega_d)$'.format(omega_d))
     plt.ylabel('Amplitude (A)')
-    plt.savefig('A1_b0.1_o2_Oscillator-driven-multi.svg', bbox_inches='tight')
+    #plt.savefig('A1_b0.1_o2_Oscillator-driven-multi.svg', bbox_inches='tight')
     plt.show()
 
 # Main parameters for simulation
@@ -55,7 +55,7 @@ t0 = 0   # initial time
 
 # System properties
 b = 0.1   # damping coefficient
-omega0 = 2  # natural frequency of the oscillator
+omega0 = 9  # natural frequency of the oscillator
 A = 1    # amplitude of the driving force
 tf = 100    # final time for the simulation
 

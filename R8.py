@@ -62,23 +62,18 @@ def double_loop(y0, t0, tf, n):
 
         plt.tight_layout()
 
-        # End of outer loop
-    # Out of outer loop
-    #plt.savefig('Oscillator-freq-multi.pdf', bbox_inches='tight')
+ 
+x0 = 0  
+v0 = 1 
+y0 = [x0, v0] 
+t0 = 0   
 
-# Main parameters for simulation
-x0 = 0   # initial position
-v0 = 1   # initial velocity
-y0 = [x0, v0]  # initial state (position and velocity)
-t0 = 0   # initial time
-
-# System properties
-b = 0.01    # damping coefficient
-omega0 = 1  # natural frequency of the oscillator
-A = 1       # amplitude of the driving force
-tf = 50*np.pi     # final time for the simulation
+b = 0.01   
+omega0 = 1  
+A = 1     
+tf = 50*np.pi    
 
 n = 1001
 
 double_loop(y0, t0, tf, n)
-plt.savefig('R8.svg', bbox_inches='tight')
+#plt.savefig('R8.svg', bbox_inches='tight')

@@ -14,7 +14,7 @@ def main():
     i0 = np.array([0])
     t0 = 0
     tf = 20
-    h = 0.5
+    h = 0.05
     t = np.arange(t0, tf+h, h)
     result = integrate.solve_ivp(fun=differential_rl, 
                                  t_span=(t0, tf), 
@@ -26,7 +26,7 @@ def main():
     i_exact = (v / r) * (1 - np.exp(-r * t / l))
     
     plt.plot(t, i_differential, "k-", label = "Differential Equation")
-    plt.plot(t, i_exact, "C1--", label = "Exact Solution")
+    #plt.plot(t, i_exact, "C1--", label = "Exact Solution")
     plt.xlabel("Time (s)")
     plt.ylabel("Current (A)")
     plt.legend()

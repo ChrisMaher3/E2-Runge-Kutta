@@ -18,7 +18,7 @@ v0 = 1
 y0 = (x0, v0)  
 t0 = 0  
 
-b = 5
+b = 0.1
 omega0 = 1
 
 
@@ -58,5 +58,5 @@ ax[1].plot(v, x, 'k')
 ax[1].axis('equal')
 ax[1].set_xlabel("Displacement (x)")
 ax[1].set_ylabel("Velocity (v)")
-plt.savefig("R5_B5_t25.83_overdamped.svg",bbox_inches='tight') 
+#plt.savefig("R5_B5_t25.83_overdamped.svg",bbox_inches='tight') 
 plt.show()
